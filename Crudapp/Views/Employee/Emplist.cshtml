@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Crudapp.Models.Employee>
+
+@{
+    ViewData["Title"] = "Emplist";
+}
+
+<h1>Emplist</h1>
+
+<p class="float-right">
+    <a asp-action="Create" class="btn-outline-primary">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.mobile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.descr)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Create", new { id = item.id,item.ename ,item.fname,item.email,item.descr,item.deptid,item.mobile }, new { @class = "btn btn-success" }) |
+
+                @Html.ActionLink("Delete", "DeleteEmp", new { id = item.id }, new { @class = "btn btn-danger" ,OnClick="return confirm('do want to delete this record?')"})
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.mobile)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descr)
+            </td>
+
+
+
+        </tr>
+}
+    </tbody>
+</table>
